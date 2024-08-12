@@ -18,5 +18,7 @@ class LevelController extends Controller
 
         return 'update data berhasil. Jumlah data yang diupdate: ' . $row . ' baris';
     
+        
+    
     }
 }
