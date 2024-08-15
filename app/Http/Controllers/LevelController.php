@@ -20,9 +20,20 @@ class LevelController extends Controller
 
         // $row = DB::delete('delete from m_level where level_kode = ?', ['CUS']);
         // return 'Delete data berhasil, Jumlah data yang dihapus: ' . $row . ' baris';
+     
+    
+        $breadcrumb = (object)[
+            'title' => 'Level Pengguna',
+            'list'  => ['Home', 'Level']
+        ];
+
+        $activeMenu = 'level';
 
         $data = DB::select('select * from m_level');
-        return view( 'level',['data'=>$data]);
+
+        return view('Level', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu, 'data'=>$data]);
+    
     
     }
+    
 }
