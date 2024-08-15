@@ -23,9 +23,16 @@ class KategoriController extends Controller
 
         // $row = DB::table('m_kategori')->where('kategori_kode', 'SNK')->delete();
         // return 'delete data berhasil, jumlah data yang terhapus'  . $row . ' baris';
+        $breadcrumb = (object)[
+            'title' => 'Kategori Barang',
+            'list'  => ['Home', 'Level']
+        ];
 
-        $data = DB::table('m_kategori')->get();
-        return view('kategori', ['data'=>$data]);
+        $activeMenu = 'kategori';
+
+        $data = DB::select('select * from m_kategori');
+
+        return view('Kategori', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu, 'data'=>$data]);
         
     }
 }
