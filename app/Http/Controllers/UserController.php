@@ -6,7 +6,7 @@ use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -28,9 +28,8 @@ class UserController extends Controller
         $level = LevelModel::all(); //ambil data level untuk ditampilkan di form
         $activeMenu = 'user';
 
-        $data = DB::select(' SELECT m_user.user_id, m_user.username, m_user.nama, m_level.level_nama FROM m_user JOIN m_level ON m_user.level_id = m_level.level_id');
 
-        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'data' => $data, 'activeMenu' => $activeMenu]);
+        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
 
     // Ambil data user dalam bentuk json untuk datatables
@@ -47,7 +46,7 @@ class UserController extends Controller
             // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
             ->addIndexColumn()
             ->addColumn('aksi', function ($user) { // menambahkan kolom aksi
-                $btn = '<a href="' . url('/user/' . $user->user_id) . '" class="btn btninfo btn-sm">Detail</a> ';
+                $btn = '<a href="' . url('/user/' . $user->user_id) . '" class="btn btn-info btn-sm">Detail</a> ';
                 $btn .= '<a href="' . url('/user/' . $user->user_id . '/edit') . '"class="btn btn-warning btn-sm">Edit</a> ';
                 $btn .= '<form class="d-inline-block" method="POST" action="' . url('/user/' . $user->user_id) . '">' . csrf_field() . method_field('DELETE') . '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';
                 return $btn;
