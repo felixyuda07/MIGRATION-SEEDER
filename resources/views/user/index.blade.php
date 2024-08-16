@@ -40,49 +40,7 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($data as $user)
-                    <tr>
-                        <td>{{ $user->user_id }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->nama }}</td>
-                        <td>{{ $user->level_nama }}</td>
-                        <td>
-                            <a href="{{ url('/user/' . $user->user_id) }}" class="btn btn-info btn-sm">Detail</a>
-                            <a href="{{ url('/user/' . $user->user_id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ url('/user/' . $user->user_id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin menghapus data ini?');">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-5">
-                <div class="dataTables_info" id="example2_info"
-                role="status" aria-live="polite">Showing 1 to 1 of 1 entries</div>
-            </div>
-            <div class="col-sm-12 col-md-7">
-                <div class="dataTables_paginate paging_simple_numbers"
-                id="example2_paginate"></div>
-                <ul class="pagination">
-                    <li class="paginate_button page-item previous disabled" 
-                    id="example2_previous"><a href="#" aria-controls="example2"
-                    data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                    <li class="paginate_button page-item active">
-                        <a href="#" aria-controls="example2" data-dt-idx="1"
-                        tabindex="0" class="page-link">1</a>
-                    </li>
-                    <li class="paginate_button page-item next" id="example_next">
-                        <a href="#" aria-controls="example2" data-dt-idx="4"
-                        tabindex="0" class="page-link">Next</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 @endsection

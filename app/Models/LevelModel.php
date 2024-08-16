@@ -11,7 +11,7 @@ class LevelModel extends Model
     protected $table = 'm_level';
     
     // Kolom yang bisa diisi massal
-    protected $fillable = ['level_name']; // Ganti dengan kolom yang sesuai
+    protected $fillable = ['level_kode', 'level_nama']; // Ganti dengan kolom yang sesuai
 
     // Jika tabel tidak memiliki kolom timestamp
     public $timestamps = false;
