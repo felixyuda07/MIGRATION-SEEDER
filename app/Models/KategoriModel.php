@@ -26,6 +26,6 @@ class KategoriModel extends Model
     // Relasi dengan UserModel
     public function users()
     {
-        return $this->hasMany(UserModel::class, 'kategori_id');
+        return $this->hasMany(BarangModel::class, 'kategori_id');
     }
 }
