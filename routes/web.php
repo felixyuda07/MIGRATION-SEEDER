@@ -61,3 +61,14 @@ Route::Group(['prefix' => 'barang'], function(){
     Route::put('/{id}', [BarangController::class, 'update']); //menyimpan perubahan data user
     Route::delete('/{id}', [BarangController::class, 'destroy']); //menghapus data user
 });
+
+Route::Group(['prefix' => 'stok'], function(){
+    Route::get('/', [StokController::class, 'index']); //menampilkan halaman awal user
+    Route::post('/list', [StokController::class, 'list']);  //menampilkan data user dalam bentuk json untuk datables
+    Route::get('/create', [StokController::class, 'create']); //menampilkan hallaman form tambah user
+    Route::post('/', [StokController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [StokController::class, 'show']); //menampilkan detail user
+    Route::get('/{id}/edit', [StokController::class, 'edit']); //menampilkan halaman form edit
+    Route::put('/{id}', [StokController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [StokController::class, 'destroy']); //menghapus data user
+});
