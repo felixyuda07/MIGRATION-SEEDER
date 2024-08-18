@@ -15,8 +15,7 @@ use Illuminate\Routing\RouteGroup;
 
 
 Route::get('/', [WelcomeController::class, 'index']);
-Route::get('/stok', [StokController::class, 'index']);
-Route::get('/penjualan', [PenjualanController::class, 'index']);
+
 
 Route::Group(['prefix' => 'user'], function(){
     Route::get('/', [UserController::class, 'index']); //menampilkan halaman awal user
@@ -71,4 +70,15 @@ Route::Group(['prefix' => 'stok'], function(){
     Route::get('/{id}/edit', [StokController::class, 'edit']); //menampilkan halaman form edit
     Route::put('/{id}', [StokController::class, 'update']); //menyimpan perubahan data user
     Route::delete('/{id}', [StokController::class, 'destroy']); //menghapus data user
+});
+
+Route::Group(['prefix' => 'penjualanDetail'], function(){
+    Route::get('/', [PenjualanDetailController::class, 'index']); //menampilkan halaman awal user
+    Route::post('/list', [PenjualanDetailController::class, 'list']);  //menampilkan data user dalam bentuk json untuk datables
+    Route::get('/create', [PenjualanDetailController::class, 'create']); //menampilkan hallaman form tambah user
+    Route::post('/', [PenjualanDetailController::class, 'store']); //menyimpan data user baru
+    Route::get('/{id}', [PenjualanDetailController::class, 'show']); //menampilkan detail user
+    Route::get('/{id}/edit', [PenjualanDetailController::class, 'edit']); //menampilkan halaman form edit
+    Route::put('/{id}', [PenjualanDetailController::class, 'update']); //menyimpan perubahan data user
+    Route::delete('/{id}', [PenjualanDetailController::class, 'destroy']); //menghapus data user
 });

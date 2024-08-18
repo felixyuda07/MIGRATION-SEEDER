@@ -27,4 +27,9 @@ class BarangModel extends Model
     {
         return $this->belongsTo(KategoriModel::class, 'kategori_id'); // Sesuaikan 'kategori_id' dengan nama kolom foreign key
     }
+
+    public function penjualandetail()
+    {
+        return $this->hasMany(PenjualanDetailModel::class, 'barang_id');
+    }
 }
